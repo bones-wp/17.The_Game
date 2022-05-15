@@ -3,15 +3,17 @@ public abstract class Person implements Fighter{
 
     private String name;
     private int health = 100;
-    private int gold = (int) Math.ceil(Math.random() * 100);
-    private int dexterity = (int) Math.ceil(Math.random() * 40);
+    private int gold = (int) Math.ceil(Math.random() * 200);
+    private int dexterity = (int) Math.ceil(Math.random() * 30);
     private int strength = (int) Math.ceil(Math.random() * 30);
-    private int experience = (int) Math.ceil(Math.random() * 100);
+    private int experience = (int) Math.ceil(Math.random() * 200);
     private int level = 1;
+    private int healPotion = 0;
 
     public Person(String name) {
         this.name = name;
     }
+
 
     public int attack () {
         Random randomCrit = new Random();
@@ -30,13 +32,22 @@ public abstract class Person implements Fighter{
     }
 
     public void healing (){
-        if (health < 100){
-            health += 10;
+        if (getHealPotion() != 0 && health < 150){
+            health += 20;
+            System.out.println("Вы исцелены, Ваш уровень здоровья " + getHealth() );
         }
-        if (health > 100) {
-            health = 100;
+        if (getHealPotion() != 0 && health > 150) {
+            health = 150;
+        }
+        if (getHealPotion() == 0){
+            System.out.println("У Вас нет лечебного зелья!");
+        }
+        else {
+            System.out.println("Вы уже полностью здоровы!");
         }
     }
+
+
 
     public String getName() {
         return name;
@@ -84,5 +95,17 @@ public abstract class Person implements Fighter{
 
     public int getLevel() {
         return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getHealPotion() {
+        return healPotion;
+    }
+
+    public void setHealPotion(int healPotion) {
+        this.healPotion = healPotion;
     }
 }

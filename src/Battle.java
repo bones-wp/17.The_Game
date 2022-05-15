@@ -42,7 +42,7 @@ public class Battle {
             System.out.println(String.format("%s наносит %d урона", attacker.getName(), dmg));
             System.out.println(String.format("У %s осталось %d единиц здоровья", defender.getName(), defenderHP));
         } else if (dmg != 0 && random == 2) {
-            System.out.println(String.format("%s наносит критический удар %d урона", attacker.getName(), dmg));
+            System.out.println(String.format("%s наносит критический удар %d урона", attacker.getName(), (dmg * 2)));
             System.out.println(String.format("У %s осталось %d единиц здоровья", defender.getName(), defenderHP));
 
         } else {
@@ -58,6 +58,7 @@ public class Battle {
                     defender.getExperience(), defender.getGold()));
             attacker.setExperience(attacker.getExperience() + defender.getExperience());
             attacker.setGold(attacker.getGold() + defender.getGold());
+            levelUp(attacker);
             fightCallback.fightWin();
             return true;
             //если защищающийся не повержен, то мы устанавливаем ему новый уровень здоровья
@@ -66,4 +67,43 @@ public class Battle {
             return false;
         }
     }
+    public void levelUp (Person person) {
+        if (person.getExperience() >= 200 && person.getExperience() < 300) {
+            person.setLevel(2); person.setHealth(110); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 300 && person.getExperience() < 400) {
+            person.setLevel(3); person.setHealth(120); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 400 && person.getExperience() < 500) {
+            person.setLevel(4); person.setHealth(125); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 500 && person.getExperience() < 600) {
+            person.setLevel(5);person.setHealth(130); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 600 && person.getExperience() < 700) {
+            person.setLevel(6); person.setHealth(135); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 700 && person.getExperience() < 800) {
+            person.setLevel(7); person.setHealth(140); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 800 && person.getExperience() < 900) {
+            person.setLevel(8); person.setHealth(145); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 900 && person.getExperience() < 1000) {
+            person.setLevel(9); person.setHealth(150); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+        if (person.getExperience() >= 1000 && person.getExperience() < 1100) {
+            person.setLevel(10); person.setHealth(160); person.setDexterity(+5); person.setStrength(+5);
+            System.out.println("LEVEL UP! Ваш уровень " + person.getLevel());
+        }
+    }
+
 }
