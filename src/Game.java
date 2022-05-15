@@ -1,8 +1,9 @@
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Scanner;
+import java.io.InputStreamReader;
 
 public class Game {
-    private Scanner scanner = new Scanner(System.in);
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     private Person hero = null;
     private Battle battle = new Battle();
 
@@ -10,7 +11,7 @@ public class Game {
     public void start(){
         System.out.println("Введите имя Вашего героя:");
         try {
-            enter(scanner.nextLine());
+            enter(br.readLine());
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -29,7 +30,7 @@ public class Game {
         switch (string){
             case "1":
                 System.out.println("Торговец ещё не приехал");
-                enter(scanner.nextLine());
+                enter(br.readLine());
             case "2":
                 System.out.println("Ваш путь лежит в опасный тёмный лес!");
                 realFight();
@@ -41,9 +42,9 @@ public class Game {
             break;
             case "нет":
                 choice();
-                enter(scanner.nextLine());
+                enter(br.readLine());
         }
-        enter(scanner.nextLine());
+        enter(br.readLine());
     }
 
     private void choice(){
@@ -66,7 +67,7 @@ public class Game {
                         hero.getExperience(), hero.getGold(), hero.getHealth()));
                 System.out.println("Продолжить исследовать тёмный лес? (да/нет)");
                 try {
-                    enter(scanner.nextLine());
+                    enter(br.readLine());
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -76,7 +77,7 @@ public class Game {
             public void fightLose() {
                 System.out.println("Стоит попробовать ещё раз..");
                 hero = null;
-                start();
+                System.exit(1);
             }
         });
     }
