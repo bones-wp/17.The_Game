@@ -33,7 +33,7 @@ public class Game {
                 System.out.println(String.format("Приветствую тебя %s! Цена одного лечебного зелья 100 золотых. Хочешь " +
                         "закупиться? (yes/no)", hero.getName()));
 
-                buyPoition(br.readLine());
+                enter(br.readLine());
             case "2":
                 System.out.println("Ваш путь лежит в опасный тёмный лес!");
                 realFight();
@@ -49,17 +49,12 @@ public class Game {
             break;
             case "нет":
                 choice();
-        }
-        enter(br.readLine());
-    }
-
-    private void buyPoition (String buy) throws IOException {
-        switch (buy){
             case "yes":
                 if (hero.getGold() >= 100) {
                     hero.setGold(-100); hero.setHealPotion(+1);
-                    System.out.println("Вы купили 1 зелье лечения. Теперь их у вас " + hero.getHealPotion() + " Хотите ещё?");
-                    buyPoition(br.readLine());
+                    System.out.println("Вы купили 1 зелье лечения. Теперь их у вас " + hero.getHealPotion() +
+                            " Хотите ещё?");
+                    enter(br.readLine());
                 }
                 else {
                     System.out.println("У Вас не хватает золотых! Сейчас их у вас " + hero.getGold());
@@ -69,10 +64,10 @@ public class Game {
             case "no":
                 choice();
                 enter(br.readLine());
-        }
-        buyPoition(br.readLine());
-    }
 
+        }
+        enter(br.readLine());
+    }
 
     private void choice(){
         System.out.println("Куда Вы хотите идти? \n" + "1. К торговцу \n" + "2. В тёмный лес \n" +
